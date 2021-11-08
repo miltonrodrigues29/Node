@@ -1,33 +1,15 @@
-const { readFile, writeFile} = require('fs')
-
-readFile('./content/sub folder/first.txt','utf-8',(err,result)=>{
-    if(err){
-        console.log(err)
-        return
-    }
-    
-    const first = result;
-    console.log(first)
-    
+const http = require('http');
+const server = http.createServer((req,res)=>{
+if(req.url==='/')
+{
+    res.end("This is out home page")
 }
-
-)
-
-readFile('./content/sub folder/second.txt','utf-8',(err,result)=>{
-    if(err){
-        console.log(err)
-        return
-    }
-    const second = result;
-    console.log(second)
+if(req.url==='/about')
+{
+    res.end("This is about page")
+}
+res.end(`<h1>Oops</h1>
+<p>Error occured </p>`)
 })
 
-
-readFile('./content/sub folder/result-sync.txt','utf-8',(err,result)=>{
-    if(err){
-        console.log(err)
-        return
-    }
-    const result_sync = result;
-    console.log(result_sync)
-})
+server.listen(3000)
