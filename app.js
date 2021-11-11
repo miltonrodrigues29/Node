@@ -1,4 +1,11 @@
-const _ = require('lodash')
-const items = [1,[2,[3,[4]]]]
-const newItems = _.flattenDeep(items)
-console.log(newItems)
+const {readFile} = require('fs')
+
+readFile('./content/subfolder/first.txt','utf8',(err,data)=>{
+    if(err){
+        return;
+    }
+    else
+    {
+        console.log(data)
+    }
+})
